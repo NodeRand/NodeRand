@@ -22,18 +22,26 @@
 <br>
 
 ## 🎪 Building 🎪
+아래와 같은 서비스를 개발·운영하고 있음.
 
-### 디지털 가이드
+|서비스|한 줄|
+|:---|:---|
+|**디지털 가이드**|행사별 공식 안내 사이트|
+|**서비스 모듈**|스탬프투어 · 지도 · 주차 혼잡도 · 프로그램 예약 · 쿠폰북 · 라이브 송출|
+|**통합로그인**|행사별 SSO · *리뉴얼 중*|
+|**백오피스**|16개 행사 서비스의 운영 도구 · *리뉴얼 중*|
+|**PC 사이트**|지역축제 PC 웹사이트|
+|**공간관리 시스템**|국내 대학 산학협력 기관 입주기업 관리 · 기관 내부 시스템이라 링크 없음|
+
 [아산 성웅 이순신축제](https://asan428.festimap.kr) ·
 [경희대학교](https://adelante.festimap.kr) ·
 [2026 택슐랭축제](https://taxchelin.festimap.kr) ·
 [2026 제주레저힐링축제](https://m.jejulhfestival.kr) ·
-[당진 삽교호 드론라이트쇼](https://djdrone.kr)
+[당진 삽교호 드론라이트쇼](https://djdrone.kr) ·
+[2025 여수밤바다불꽃축제](https://ysff.co.kr) ·
+[2026 목포 해상 W쇼](https://mokpowshow.co.kr) ·
+[제주레저힐링축제](https://jejulhfestival.kr)
 
-* 행사별 사이트 — 회사 서브도메인(`*.festimap.kr`) + **고객사 고유 도메인**
-* `동적 메타태그 = SSR` 통념 재검토 → **Lambda@Edge + CloudFront Functions** 2단 구조로 Next.js 제거
-
-### 서비스 모듈
 [스탬프투어](https://jejulhfestival.stamp.festiv.kr) ·
 [행사 지도](https://asan428.map.festiv.kr) ·
 [실시간 주차 혼잡도](https://jejulhfestival.parking.festiv.kr) ·
@@ -41,35 +49,22 @@
 [쿠폰북](https://taxchelin.couponbook.festiv.kr) ·
 [라이브 송출](https://sium-sium.live.festiv.kr)
 
-* 기능별 모듈화 — `<행사>.<서비스>.festiv.kr`
-* **템플릿 레포 + 공통 ui 패키지** — 신규 행사 셋업 표준화
-
-### 통합로그인
-* 행사별 SSO — **NextAuth 서브도메인 쿠키 설계** · 테스트 환경 분리
-* 오픈일 트래픽 = **10~20초 버스트** → **ASG 프리웜 + 클린 베이스 AMI + SSM 런타임 주입**
-* k6 **1,500 VU** · **p95 6.4s** · **실패율 0%** · *리뉴얼 중*
-
-### 백오피스 (비즈니스)
-* 16개 행사 서비스 운영 도구
-* 테스트 **0 → 251파일 / 4,639 케이스** · 기준은 "얼마나 많이"가 아니라 **"어디서 멈출지"**
-* **변형 테스트(mutation testing)** 177종 중 174종 검출 · *리뉴얼 중*
-
-### 그 외
-[2025 여수밤바다불꽃축제](https://ysff.co.kr) ·
-[2026 목포 해상 W쇼](https://mokpowshow.co.kr) ·
-[제주레저힐링축제](https://jejulhfestival.kr) — PC 사이트
-
-국내 대학 산학협력 기관 **입주기업 공간관리 시스템** 구축 (2025~) — 기관 내부 시스템, 링크 없음
-
 > 위 서비스 코드는 전부 **사내 비공개 저장소**. 이 계정의 공개 저장소는 아래 두 섹션.
 
 <br>
 
-## 🧭 Ownership 🧭
-* **CloudFront 무효화 엔드포인트** — 무인증 공개 → **SigV4 + IAM 2겹**
-* **인시던트 대응** — 서버 침해 사고 · nginx `start-limit-hit` 테스트 서버 전면 다운 · 스탬프투어 OOM 위험
-* **Next.js → React + Vite 회귀** — 통합로그인만 NextAuth 때문에 Next.js 유지
-* **DX 인프라** — 문서 파이프라인 · 템플릿 패키지 · 버전 관리 스크립트
+## ⚙️ Engineering ⚙️
+구현해 본 것들.
+
+* **엣지 컴퓨팅** — 정적 SPA에서 동적 메타태그 (Lambda@Edge · CloudFront Functions 2단)
+* **오토스케일링** — 초 단위 버스트 트래픽 대응 (ASG 프리웜 · 클린 베이스 AMI · SSM 런타임 주입), k6 **1,500 VU** 부하검증 · **p95 6.4s** · **실패율 0%**
+* **SSO 인증** — NextAuth 기반 서브도메인 쿠키 설계 · 테스트 환경 분리
+* **API 인증 설계** — 무인증 공개 엔드포인트를 **SigV4 + IAM 2겹**으로 차단
+* **테스트 도입** — 0 → **251파일 / 4,639 케이스**, "얼마나 많이"가 아니라 "어디서 멈출지" 기준. **변형 테스트(mutation testing)** 로 테스트 자체를 재검증 (177종 중 174종 검출)
+* **인시던트 대응** — 서버 침해 사고 · nginx `start-limit-hit` 로 인한 서버 전면 다운 · OOM 위험 진단
+* **프레임워크 전환** — Next.js → React + Vite 회귀. 다만 전부 통일하지 않고, 근거가 있는 곳은 그대로 둠
+* **DX 인프라** — 템플릿 레포 · 공통 ui 패키지 · 문서 파이프라인 · 버전 관리 스크립트
+* **CI/CD** — GitHub Actions · OIDC 인증 · 서브도메인 프로비저닝 자동화
 
 <br>
 
