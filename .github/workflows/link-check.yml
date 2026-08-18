@@ -1,0 +1,53 @@
+name: link-check
+
+# README 에 걸어둔 서비스 링크가 아직 살아 있는지 확인한다.
+# 링크는 전부 남이 내릴 수 있는 도메인이라, 죽어도 소리가 나지 않는다.
+
+on:
+  schedule:
+    - cron: '0 0 1 * *'   # 매달 1일 00:00 UTC = 09:00 KST
+  workflow_dispatch:       # Actions 탭에서 수동 실행
+  push:
+    paths:
+      - 'README.md'
+      - '.github/workflows/link-check.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: README 링크 검사
+        run: |
+          # 제외 대상 — 배지(shields.io)는 수십 개라 노이즈,
+          # raw.githubusercontent 는 자기 파일, activity-graph 는 서드파티라 간헐적으로 죽는다
+          urls=$(grep -oE 'https://[^)" <]+' README.md \
+                 | grep -vE 'img\.shields\.io|raw\.githubusercontent\.com|github-readme-activity-graph\.vercel\.app' \
+                 | sed 's/[.,]$//' \
+                 | sort -u)
+
+          echo "검사 대상 $(echo "$urls" | wc -l | tr -d ' ')건"
+          echo
+
+          fail=0
+          while IFS= read -r u; do
+            [ -n "$u" ] || continue
+            code=$(curl -sS -o /dev/null -m 20 -w '%{http_code}' -L --retry 2 --retry-delay 5 -A 'link-check (+https://github.com/NodeRand/NodeRand)' "$u" 2>/dev/null || echo 000)
+            if [ "$code" = "200" ]; then
+              printf '✅ %s  %s\n' "$code" "$u"
+            else
+              printf '❌ %s  %s\n' "$code" "$u"
+              fail=1
+            fi
+          done <<< "$urls"
+
+          echo
+          if [ "$fail" -ne 0 ]; then
+            echo "죽은 링크가 있다. README 에서 빼거나 주소를 고칠 것."
+            exit 1
+          fi
+          echo "전부 살아 있음."
