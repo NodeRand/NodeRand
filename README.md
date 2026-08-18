@@ -8,48 +8,36 @@
   </samp>
 </p>
 
-### 프론트엔드로 시작해, 그 아래 인프라까지 내려온 개발자 🤗
-학부 팀에서 축제 사이트 하나로 시작해, 그게 회사가 됐고, 지금은 그 위의 서비스들을 굴리고 있음.
-화면부터 시작했지만 문제가 프론트 바깥에 있는 경우가 많아 **인증 · 배포 · 확장성 · 보안**까지 따라 내려옴.
+### 프론트엔드부터 그 아래 인프라까지 다루는 개발자입니다 🤗
+
+React · TypeScript 기반의 **프론트엔드**를 중심에 두고, 서비스가 사용자에게 닿기까지 필요한
+**배포 · 확장성 · 인증 · 보안** 영역을 함께 맡습니다.
+CI/CD와 다중 도메인 배포를 직접 굴리고, 트래픽이 몰리는 상황을 견디도록 인프라를 설계하며,
+인증 경계와 공개 엔드포인트를 점검하는 일까지 제 범위입니다.
 <br>
 
 ## 🧠 Approach 🧠
-* 문서를 먼저 읽기보다 **부딪혀 해결한 뒤 이름을 붙이는** 순서
-* 이슈가 끝나면 개념 단위로 쪼개 기록 — 개인 볼트에 **개념 300여 개 · 계열 8개**를 링크로 연결
-* 깊이는 의도적으로 조절 — 백엔드는 **읽고 리뷰할 수준**까지, 그 이상은 멈춤
-* "더 나은 안"보다 **무엇을 내주고 무엇을 얻었는지** 말할 수 있는 결정
+* 문제가 어느 층에 있든 **끝까지 따라 내려가서** 원인을 확인하는 편입니다
+* 부딪혀 해결한 뒤 개념으로 정리하는 순서로 배웁니다 — 개인 볼트에 **개념 300여 개**를 링크로 엮어 두고 있습니다
+* **무엇을 내주고 무엇을 얻었는지** 말할 수 있어야 설계 결정이라고 생각합니다
+* **조용히 실패하는 것**을 가장 경계합니다. 실패가 소리를 내게 만드는 데 시간을 씁니다
+* 깊이는 목적에 맞춰 조절합니다 — 백엔드는 읽고 리뷰할 수 있는 수준까지가 지금의 기준입니다
 
 <br>
 
 ## 🎪 Building 🎪
 아래와 같은 서비스를 개발·운영하고 있음.
 
-|서비스|한 줄|
-|:---|:---|
-|**디지털 가이드**|행사별 공식 안내 사이트|
-|**서비스 모듈**|스탬프투어 · 지도 · 주차 혼잡도 · 프로그램 예약 · 쿠폰북 · 라이브 송출|
-|**통합로그인**|행사별 SSO · *리뉴얼 중*|
-|**백오피스**|16개 행사 서비스의 운영 도구 · *리뉴얼 중*|
-|**PC 사이트**|지역축제 PC 웹사이트|
-|**공간관리 시스템**|국내 대학 산학협력 기관 입주기업 관리 · 기관 내부 시스템이라 링크 없음|
+|서비스|설명|사이트|
+|:---|:---|:---|
+|**디지털 가이드**|행사별 공식 안내 사이트|[아산 성웅 이순신축제](https://asan428.festimap.kr) · [경희대학교](https://adelante.festimap.kr) · [2026 택슐랭축제](https://taxchelin.festimap.kr) · [2026 제주레저힐링축제](https://m.jejulhfestival.kr) · [당진 삽교호 드론라이트쇼](https://djdrone.kr)|
+|**서비스 모듈**|행사에 붙이는 기능 단위 서비스|[스탬프투어](https://jejulhfestival.stamp.festiv.kr) · [행사 지도](https://asan428.map.festiv.kr) · [실시간 주차 혼잡도](https://jejulhfestival.parking.festiv.kr) · [프로그램 예약](https://firefestivaljeju.program.festiv.kr) · [쿠폰북](https://taxchelin.couponbook.festiv.kr) · [라이브 송출](https://sium-sium.live.festiv.kr)|
+|**PC 사이트**|지역축제 PC 웹사이트|[2025 여수밤바다불꽃축제](https://ysff.co.kr) · [2026 목포 해상 W쇼](https://mokpowshow.co.kr) · [제주레저힐링축제](https://jejulhfestival.kr)|
+|**통합로그인**|행사별 SSO|*리뉴얼 중*|
+|**백오피스**|16개 행사 서비스의 운영 도구|*리뉴얼 중*|
+|**공간관리 시스템**|국내 대학 산학협력 기관 입주기업 관리|기관 내부 시스템, 링크 없음|
 
-[아산 성웅 이순신축제](https://asan428.festimap.kr) ·
-[경희대학교](https://adelante.festimap.kr) ·
-[2026 택슐랭축제](https://taxchelin.festimap.kr) ·
-[2026 제주레저힐링축제](https://m.jejulhfestival.kr) ·
-[당진 삽교호 드론라이트쇼](https://djdrone.kr) ·
-[2025 여수밤바다불꽃축제](https://ysff.co.kr) ·
-[2026 목포 해상 W쇼](https://mokpowshow.co.kr) ·
-[제주레저힐링축제](https://jejulhfestival.kr)
-
-[스탬프투어](https://jejulhfestival.stamp.festiv.kr) ·
-[행사 지도](https://asan428.map.festiv.kr) ·
-[실시간 주차 혼잡도](https://jejulhfestival.parking.festiv.kr) ·
-[프로그램 예약](https://firefestivaljeju.program.festiv.kr) ·
-[쿠폰북](https://taxchelin.couponbook.festiv.kr) ·
-[라이브 송출](https://sium-sium.live.festiv.kr)
-
-> 위 서비스 코드는 전부 **사내 비공개 저장소**. 이 계정의 공개 저장소는 아래 두 섹션.
+> 위 서비스 코드는 전부 **사내 비공개 저장소**. 이 계정에 공개된 저장소는 학습 기록.
 
 <br>
 
@@ -65,22 +53,6 @@
 * **프레임워크 전환** — Next.js → React + Vite 회귀. 다만 전부 통일하지 않고, 근거가 있는 곳은 그대로 둠
 * **DX 인프라** — 템플릿 레포 · 공통 ui 패키지 · 문서 파이프라인 · 버전 관리 스크립트
 * **CI/CD** — GitHub Actions · OIDC 인증 · 서브도메인 프로비저닝 자동화
-
-<br>
-
-## 📚 Studying 📚
-* [자바 · 스프링부트](https://github.com/NodeRand/all-in-one-backend-study) — 백엔드를 읽고 리뷰할 수 있는 수준까지
-* [Next.js SSO](https://github.com/NodeRand/next-sso-study) — 통합로그인 구축 전 사전 학습
-* [AX 활용](https://github.com/NodeRand/catch-up-ax-class) — 백오피스 자동화 에이전트 방향
-* [Cursor AI](https://github.com/NodeRand/we-can-cursor-study) · [React Native](https://github.com/NodeRand/react-native-expo-cli-study) · [Next.js](https://github.com/NodeRand/next-js-study-one-bite) · [React](https://github.com/NodeRand/nomad-react-master)
-
-<br>
-
-## 🌱 Roots 🌱
-* [목포 해상 W쇼](https://github.com/Halo-Festimap/festimap-frontend-mokpo) — 학부 팀으로 맡은 축제 사이트. 지금 회사 일의 시작점
-* [피크닉플릭](https://github.com/PicnicFlick/Frontend-server) — 스마트 돗자리 대여 서비스
-* [북바오](https://github.com/FourBao-A/Frontend) — 세종대 중고 도서 거래 서비스
-* [세종대여](https://github.com/NodeRand/sejong-rent) — 소프트웨어융합대학 학생회 대여 서비스
 
 <br>
 
