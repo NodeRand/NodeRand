@@ -17,8 +17,7 @@ CI/CD와 다중 도메인 배포를 직접 굴리고, 트래픽이 몰리는 상
 <br>
 
 ## 💻 Approach 
-* 문제가 어느 층에 있든 **끝까지 따라 내려가서** 원인을 확인하는 편입니다
-* 부딪혀 해결한 뒤 개념으로 정리하는 순서로 배웁니다 — 개인 볼트에 **개념 300여 개**를 링크로 엮어 두고 있습니다
+* 문제가 어느 층에 있든 **끝까지 따라 내려가서** 원인을 확인합니다.
 * **무엇을 내주고 무엇을 얻었는지** 말할 수 있어야 설계 결정이라고 생각합니다
 * **조용히 실패하는 것**을 가장 경계합니다. 실패가 소리를 내게 만드는 데 시간을 씁니다
 * 깊이는 목적에 맞춰 조절합니다 — 백엔드는 읽고 리뷰할 수 있는 수준까지가 지금의 기준입니다
@@ -31,7 +30,8 @@ CI/CD와 다중 도메인 배포를 직접 굴리고, 트래픽이 몰리는 상
 |서비스|설명|사이트|
 |:---|:---|:---|
 |**디지털 가이드**|행사별 공식 안내 사이트|[아산 성웅 이순신축제](https://asan428.festimap.kr) · [경희대학교](https://adelante.festimap.kr) · [2026 택슐랭축제](https://taxchelin.festimap.kr) · [2026 제주레저힐링축제](https://m.jejulhfestival.kr) · [당진 삽교호 드론라이트쇼](https://djdrone.kr)|
-|**서비스 모듈**|행사에 붙이는 기능 단위 서비스(공통된 코드, 인프라를 공유하며 개별 서비스 확장)|[스탬프투어](https://jejulhfestival.stamp.festiv.kr) · [행사 지도](https://asan428.map.festiv.kr) · [실시간 주차 혼잡도](https://jejulhfestival.parking.festiv.kr) · [프로그램 예약](https://firefestivaljeju.program.festiv.kr) · [쿠폰북](https://taxchelin.couponbook.festiv.kr) · [라이브 송출](https://sium-sium.live.festiv.kr)|
+|**서비스 모듈**|행사에 붙이는 기능 단위 서비스
+(공통된 코드와 인프라를 공유하며 개별 서비스 확장)|[스탬프투어](https://jejulhfestival.stamp.festiv.kr) · [행사 지도](https://asan428.map.festiv.kr) · [실시간 주차 혼잡도](https://jejulhfestival.parking.festiv.kr) · [프로그램 예약](https://firefestivaljeju.program.festiv.kr) · [쿠폰북](https://taxchelin.couponbook.festiv.kr) · [라이브 송출](https://sium-sium.live.festiv.kr)|
 |**PC 사이트**|지역축제 PC 웹사이트|[2025 여수밤바다불꽃축제](https://ysff.co.kr) · [2026 목포 해상 W쇼](https://mokpowshow.co.kr) · [제주레저힐링축제](https://jejulhfestival.kr)|
 |**통합로그인**|행사별 SSO|*리뉴얼 중*|
 |**백오피스**|16개 행사 서비스의 운영 도구|*리뉴얼 중*|
