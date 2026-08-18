@@ -9,8 +9,16 @@
 </p>
 
 ### 프론트엔드로 시작해, 그 아래 인프라까지 내려온 개발자 🤗
-페스티컴퍼니 창립멤버 · 프론트엔드 총괄.
-축제·행사 서비스의 **인증 · 배포 · 확장성 · 보안** 담당.
+학부 팀에서 축제 사이트 하나로 시작해, 그게 회사가 됐고, 지금은 그 위의 서비스들을 굴리고 있음.
+화면부터 시작했지만 문제가 프론트 바깥에 있는 경우가 많아 **인증 · 배포 · 확장성 · 보안**까지 따라 내려옴.
+<br>
+
+## 🧠 Approach 🧠
+* 문서를 먼저 읽기보다 **부딪혀 해결한 뒤 이름을 붙이는** 순서
+* 이슈가 끝나면 개념 단위로 쪼개 기록 — 개인 볼트에 **개념 300여 개 · 계열 8개**를 링크로 연결
+* 깊이는 의도적으로 조절 — 백엔드는 **읽고 리뷰할 수준**까지, 그 이상은 멈춤
+* "더 나은 안"보다 **무엇을 내주고 무엇을 얻었는지** 말할 수 있는 결정
+
 <br>
 
 ## 🎪 Building 🎪
@@ -22,9 +30,8 @@
 [2026 제주레저힐링축제](https://m.jejulhfestival.kr) ·
 [당진 삽교호 드론라이트쇼](https://djdrone.kr)
 
-* 행사별 사이트 운영 — 회사 서브도메인(`*.festimap.kr`) + **고객사 고유 도메인**
-* `동적 메타태그 = SSR` 통념 재검토
-* **Lambda@Edge(원본 응답) + CloudFront Functions(뷰어 요청)** 2단 구조 → Next.js 제거
+* 행사별 사이트 — 회사 서브도메인(`*.festimap.kr`) + **고객사 고유 도메인**
+* `동적 메타태그 = SSR` 통념 재검토 → **Lambda@Edge + CloudFront Functions** 2단 구조로 Next.js 제거
 
 ### 서비스 모듈
 [스탬프투어](https://jejulhfestival.stamp.festiv.kr) ·
@@ -36,33 +43,25 @@
 
 * 기능별 모듈화 — `<행사>.<서비스>.festiv.kr`
 * **템플릿 레포 + 공통 ui 패키지** — 신규 행사 셋업 표준화
-* 위 엣지 메타태그 구조 재사용
 
 ### 통합로그인
 * 행사별 SSO — **NextAuth 서브도메인 쿠키 설계** · 테스트 환경 분리
-* 오픈일 트래픽 = **10~20초 버스트** → 메트릭 기반 오토스케일링으로 대응 불가
-* **ASG 프리웜 + 클린 베이스 AMI + SSM 런타임 주입**
-* k6 **1,500 VU** · c6g.medium **4~6대** · **p95 6.4s** · **실패율 0%** (부하검증 완료 · 실오픈일 실측 대기)
-* *리뉴얼 중 — 공개 예정*
+* 오픈일 트래픽 = **10~20초 버스트** → **ASG 프리웜 + 클린 베이스 AMI + SSM 런타임 주입**
+* k6 **1,500 VU** · **p95 6.4s** · **실패율 0%** · *리뉴얼 중*
 
 ### 백오피스 (비즈니스)
 * 16개 행사 서비스 운영 도구
-* 테스트 **0 → 251파일 / 4,639 케이스**
-* 기준은 "얼마나 많이"가 아니라 **"어디서 멈출지"**
-* **변형 테스트(mutation testing)** — 177종 중 174종 검출 · 남은 3종은 동치 변형 증명
-* *리뉴얼 중 — 공개 예정*
-
-### PC 사이트
-[2025 여수밤바다불꽃축제](https://ysff.co.kr) ·
-[2026 목포 해상 W쇼](https://mokpowshow.co.kr) ·
-[제주레저힐링축제](https://jejulhfestival.kr)
+* 테스트 **0 → 251파일 / 4,639 케이스** · 기준은 "얼마나 많이"가 아니라 **"어디서 멈출지"**
+* **변형 테스트(mutation testing)** 177종 중 174종 검출 · *리뉴얼 중*
 
 ### 그 외
-* 국내 대학 산학협력 기관 **입주기업 공간관리 시스템** 구축 (2025~) — 기관 내부 시스템, 링크 없음
+[2025 여수밤바다불꽃축제](https://ysff.co.kr) ·
+[2026 목포 해상 W쇼](https://mokpowshow.co.kr) ·
+[제주레저힐링축제](https://jejulhfestival.kr) — PC 사이트
 
-<br>
+국내 대학 산학협력 기관 **입주기업 공간관리 시스템** 구축 (2025~) — 기관 내부 시스템, 링크 없음
 
-> 위 서비스 코드는 전부 **사내 비공개 저장소**. 이 계정의 공개 저장소는 **학습 기록**.
+> 위 서비스 코드는 전부 **사내 비공개 저장소**. 이 계정의 공개 저장소는 아래 두 섹션.
 
 <br>
 
@@ -71,6 +70,22 @@
 * **인시던트 대응** — 서버 침해 사고 · nginx `start-limit-hit` 테스트 서버 전면 다운 · 스탬프투어 OOM 위험
 * **Next.js → React + Vite 회귀** — 통합로그인만 NextAuth 때문에 Next.js 유지
 * **DX 인프라** — 문서 파이프라인 · 템플릿 패키지 · 버전 관리 스크립트
+
+<br>
+
+## 📚 Studying 📚
+* [자바 · 스프링부트](https://github.com/NodeRand/all-in-one-backend-study) — 백엔드를 읽고 리뷰할 수 있는 수준까지
+* [Next.js SSO](https://github.com/NodeRand/next-sso-study) — 통합로그인 구축 전 사전 학습
+* [AX 활용](https://github.com/NodeRand/catch-up-ax-class) — 백오피스 자동화 에이전트 방향
+* [Cursor AI](https://github.com/NodeRand/we-can-cursor-study) · [React Native](https://github.com/NodeRand/react-native-expo-cli-study) · [Next.js](https://github.com/NodeRand/next-js-study-one-bite) · [React](https://github.com/NodeRand/nomad-react-master)
+
+<br>
+
+## 🌱 Roots 🌱
+* [목포 해상 W쇼](https://github.com/Halo-Festimap/festimap-frontend-mokpo) — 학부 팀으로 맡은 축제 사이트. 지금 회사 일의 시작점
+* [피크닉플릭](https://github.com/PicnicFlick/Frontend-server) — 스마트 돗자리 대여 서비스
+* [북바오](https://github.com/FourBao-A/Frontend) — 세종대 중고 도서 거래 서비스
+* [세종대여](https://github.com/NodeRand/sejong-rent) — 소프트웨어융합대학 학생회 대여 서비스
 
 <br>
 
