@@ -23,10 +23,9 @@ jobs:
 
       - name: README 링크 검사
         run: |
-          # 제외 대상 — 배지(shields.io)는 수십 개라 노이즈,
-          # raw.githubusercontent 는 자기 파일, activity-graph 는 서드파티라 간헐적으로 죽는다
+          # 제외 대상 — 배지(shields.io)는 수십 개라 노이즈, raw.githubusercontent 는 자기 파일
           urls=$(grep -oE 'https://[^)" <]+' README.md \
-                 | grep -vE 'img\.shields\.io|raw\.githubusercontent\.com|github-readme-activity-graph\.vercel\.app' \
+                 | grep -vE 'img\.shields\.io|raw\.githubusercontent\.com' \
                  | sed 's/[.,]$//' \
                  | sort -u)
 
