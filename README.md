@@ -73,8 +73,3 @@ React · TypeScript 기반의 **프론트엔드**를 중심에 두고, 서비스
 * 세종대학교 소프트웨어학과 졸업 (2020 ~ 2026)
 * 멋쟁이사자처럼 at 세종대학교 프론트엔드 트랙 과정 11기 수료 (2023 ~ 2024)
 * 2023-2 세종대학교 소프트웨어학과 학술제 수상 (2023)
-
-<br>
-
-## 📈 Activity Graph
-[![NodeRand's github activity graph](https://github-readme-activity-graph.vercel.app/graph?username=NodeRand&theme=react)](https://github.com/Ashutosh00710/github-readme-activity-graph)
