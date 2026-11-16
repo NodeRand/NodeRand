@@ -1,4 +1,4 @@
-![header](https://capsule-render.vercel.app/api?type=Waving&section=header&height=200&text=NodeRand&fontAlignX=50&fontAlignY=35&color=gradient&fontSize=100&fontColor=ffffff&desc=Frontend%20%26%20Platform%20Engineer)
+![header](https://capsule-render.vercel.app/api?type=Waving&section=header&height=200&text=NodeRand&fontAlignX=50&fontAlignY=35&color=gradient&fontSize=100&fontColor=ffffff&desc=Frontend%20%C2%B7%20Platform%20Engineer)
 -----
 
 <p align="center">
